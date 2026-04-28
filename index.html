@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>digiMotion Labs</title>
+    <meta
+      name="description"
+      content="digiMotion Labs is a digital product and venture studio building premium technology brands across AI, creator tools, commerce, guided workflows, and interactive digital experiences."
+    />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #07111f;
+        --muted: #5f6b7a;
+        --line: rgba(7, 17, 31, 0.1);
+        --blue: #11b9e8;
+        --blue-dark: #0b68d8;
+        --navy: #07111f;
+        --soft: #f6f8fb;
+        --card: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+
+      .brand-main {
+        font-size: 25px;
+        letter-spacing: -0.055em;
+        font-weight: 800;
+      }
+
+      .brand-main span:first-child {
+        font-weight: 400;
+      }
+
+      .brand-labs {
+        margin-top: 7px;
+        color: var(--blue);
+        letter-spacing: 0.45em;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 700;
+        padding-left: 38px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 82vh;
+        display: grid;
+        place-items: center;
+        padding: 90px 24px 70px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(17, 185, 232, 0.14), transparent 34%),
+          linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      }
+
+      .hero-inner {
+        max-width: 1080px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--blue);
+        box-shadow: 0 0 20px rgba(17, 185, 232, 0.85);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(48px, 8vw, 104px);
+        letter-spacing: -0.085em;
+        line-height: 0.94;
+        font-weight: 850;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 28px auto 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2.2vw, 24px);
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        margin-top: 38px;
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 15px;
+        border: 1px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: white;
+        box-shadow: 0 18px 45px rgba(7, 17, 31, 0.18);
+      }
+
+      .btn-secondary {
+        background: white;
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      section {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 86px 24px;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 36px;
+      }
+
+      .section-label {
+        color: var(--blue-dark);
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin-bottom: 14px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 60px);
+        letter-spacing: -0.06em;
+        line-height: 1;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+        margin: 20px 0 0;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+        min-height: 250px;
+        box-shadow: 0 18px 50px rgba(7, 17, 31, 0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 26px;
+        letter-spacing: -0.045em;
+      }
+
+      .card p {
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 15.5px;
+        margin: 16px 0 24px;
+      }
+
+      .status {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #0d6078;
+        background: rgba(17, 185, 232, 0.11);
+      }
+
+      .principles {
+        background: var(--soft);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .principles-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 86px 24px;
+      }
+
+      .principle-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 36px;
+      }
+
+      .principle {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+
+      .about-contact {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        padding: 32px;
+        background: white;
+      }
+
+      .panel.dark {
+        background:
+          radial-gradient(circle at 100% 0%, rgba(17, 185, 232, 0.18), transparent 30%),
+          var(--navy);
+        color: white;
+      }
+
+      .panel p {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 17px;
+      }
+
+      .panel.dark p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .contact-line {
+        display: block;
+        margin-top: 16px;
+        color: var(--blue);
+        font-weight: 850;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 34px 24px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+
+        .portfolio-grid,
+        .principle-grid,
+        .about-contact {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <nav class="nav">
+        <div class="nav-inner">
+          <a class="brand" href="#top" aria-label="digiMotion Labs home">
+            <div class="brand-main"><span>digi</span><strong>Motion</strong></div>
+            <div class="brand-labs">Labs</div>
+          </a>
+
+          <div class="nav-links">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#principles">Principles</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <header class="hero" id="top">
+        <div class="hero-inner">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Digital product & venture studio
+          </div>
+
+          <h1>Building digital brands with clarity, trust, and scale.</h1>
+
+          <p>
+            digiMotion Labs creates premium technology platforms, tools, and experiences across AI,
+            creator workflows, commerce, guided customer systems, and interactive digital media.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">Explore the Portfolio</a>
+            <a class="btn btn-secondary" href="#contact">Contact digiMotion Labs</a>
+          </div>
+        </div>
+      </header>
+
+      <section id="portfolio">
+        <div class="section-head">
+          <div class="section-label">Portfolio</div>
+          <h2>Focused brands built around real workflows.</h2>
+          <p>
+            Each digiMotion Labs project is designed to reduce confusion, improve trust, or give
+            users a better way to create, organize, decide, and move forward.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="card">
+            <div>
+              <h3>Relay23</h3>
+              <p>
+                A browser-first creator platform designed to help creators create, organize, own,
+                and monetize their digital work.
+              </p>
+            </div>
+            <span class="status">In development</span>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3>digiSELL</h3>
+              <p>
+                A guided home-selling platform for homeowners who want a clearer, calmer way to sell
+                on their own.
+              </p>
+            </div>
+            <span class="status">In development</span>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3>digiSHOPT</h3>
+              <p>
+                A relationship-first shopping platform built around real store pricing, trusted
+                shoppers, and a flat service-fee model.
+              </p>
+            </div>
+            <span class="status">Planning / pilot</span>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3>digiSCAN</h3>
+              <p>
+                A privacy-first AI image detection utility designed to help users better understand
+                whether images may be AI-generated.
+              </p>
+            </div>
+            <span class="status">Concept / planning</span>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3>digiGLOW</h3>
+              <p>
+                An emotional utility experience built around calming interaction, glow feedback, and
+                digital atmosphere.
+              </p>
+            </div>
+            <span class="status">Creative lab</span>
+          </article>
+
+          <article class="card">
+            <div>
+              <h3>MOONTERRA</h3>
+              <p>
+                An exploration and habitat-building game concept with the tagline:
+                <strong>New Worlds Await.</strong>
+              </p>
+            </div>
+            <span class="status">Long-term project</span>
+          </article>
+        </div>
+      </section>
+
+      <div class="principles" id="principles">
+        <div class="principles-inner">
+          <div class="section-head">
+            <div class="section-label">Operating standard</div>
+            <h2>Do not launch unfinished products.</h2>
+            <p>
+              The company standard is premium, intentional, customer-first, and launch-ready.
+              Products should be useful, understandable, and trustworthy before they reach the public.
+            </p>
+          </div>
+
+          <div class="principle-grid">
+            <div class="principle">Clear language over hype.</div>
+            <div class="principle">Premium execution over rushed launches.</div>
+            <div class="principle">Customer trust over short-term attention.</div>
+            <div class="principle">Useful systems over scattered features.</div>
+          </div>
+        </div>
+      </div>
+
+      <section id="about">
+        <div class="about-contact">
+          <div class="panel">
+            <div class="section-label">About</div>
+            <h2>digiMotion Labs builds digital products that feel clearer and more intentional.</h2>
+            <p>
+              We focus on products where technology can guide people through complicated workflows,
+              create better ownership, improve trust, or make digital experiences feel more alive.
+            </p>
+          </div>
+
+          <div class="panel dark" id="contact">
+            <div class="section-label">Contact</div>
+            <h2>Business inquiries</h2>
+            <p>
+              For business, legal, partnership, or product inquiries, contact digiMotion Labs.
+            </p>
+            <a class="contact-line" href="mailto:hello@digimotionlabs.com">
+              hello@digimotionlabs.com
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-inner">
+          <div>© 2026 digiMotion Labs. All rights reserved.</div>
+          <div>Built for clarity, trust, and scale.</div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
